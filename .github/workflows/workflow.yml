@@ -23,7 +23,7 @@ jobs:
           . $HOME/asdf/asdf.sh
           asdf plugin-test direnv $GITHUB_WORKSPACE 'direnv --version'
         env:
-        GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   test:
     strategy:
