@@ -21,10 +21,7 @@ jobs:
       - name: Install direnv and print version
         run: |
           . $HOME/asdf/asdf.sh
-          asdf plugin-add direnv $GITHUB_WORKSPACE
-          asdf install direnv ${{ matrix.direnv }}
-          asdf global direnv ${{ matrix.direnv }}
-          direnv --version
+          asdf plugin-test direnv $GITHUB_WORKSPACE 'direnv --version'
 
   test:
     strategy:
