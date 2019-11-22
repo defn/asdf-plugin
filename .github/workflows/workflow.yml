@@ -7,7 +7,6 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macOS-latest]
-        direnv: [2.20.0]
 
     runs-on: ${{ matrix.os }}
 
@@ -21,7 +20,8 @@ jobs:
       - name: Install direnv and print version
         run: |
           . $HOME/asdf/asdf.sh
-          asdf plugin-test direnv $GITHUB_WORKSPACE 'direnv --version'
+          asdf plugin-add direnv $GITHUB_WORKSPACE
+          asdf install direnv latest
         env:
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -53,8 +53,7 @@ jobs:
         run: |
           export PATH=$HOME/bats-core/bin:$HOME/asdf/bin:$PATH
           asdf plugin-add direnv $GITHUB_WORKSPACE
-          asdf install direnv ${{ matrix.direnv }}
-          asdf global direnv ${{ matrix.direnv }}
+          asdf install direnv latest
           bats test
         env:
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
