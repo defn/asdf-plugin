@@ -56,9 +56,8 @@ install_something() {
 
   (
     echo "∗ Downloading and installing $ORG/$REPO..."
-    mkdir -p "${install_path}/bin"
     curl --silent --location --create-dirs --output "$source_path" "$download_url" || fail "Could not download"
-    (cd "${install_path}" && tar xvfz "${version}.tar.gz")
+    (cd "${install_path}" && tar xvfz "${version}.tar.gz" && mv "${REPO}-${version}"/* .)
     echo "The installation was successful!"
   ) || (
     rm -rf "$install_path"
