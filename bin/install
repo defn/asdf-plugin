@@ -49,8 +49,8 @@ install_something() {
     *) fail "Unsupported architecture" ;;
   esac
 
-  local download_url="https://github.com/$ORG/$REPO/releases/download/v${version}/${platform}-${architecture}"
-  local source_path="${install_path}/archive.tgz"
+  local download_url="https://github.com/$ORG/$REPO/releases/archive/${version}.tar.gz"
+  local source_path="${install_path}/release.tgz"
 
   (
     echo "∗ Downloading and installing $ORG/$REPO..."
