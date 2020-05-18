@@ -15,8 +15,10 @@
 # limitations under the License.
 #
 
-ORG=defn
-REPO=sub
+__dir="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+__org_repo="$(basename "$(dirname "${__dir}")")"
+ORG="${__org_repo%%--*}"
+REPO="${__org_repo#*--}"
 
 set -eo pipefail
 
