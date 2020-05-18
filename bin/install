@@ -52,7 +52,7 @@ install_something() {
   esac
 
   local download_url="https://github.com/$ORG/$REPO/archive/${version}.tar.gz"
-  local source_path="${install_path}/${version}.tar.gz""
+  local source_path="${install_path}/${version}.tar.gz"
 
   (
     echo "∗ Downloading and installing $ORG/$REPO..."
