@@ -51,13 +51,14 @@ install_something() {
     *) fail "Unsupported architecture" ;;
   esac
 
-  local download_url="https://github.com/$ORG/$REPO/releases/archive/${version}.tar.gz"
-  local source_path="${install_path}/release.tgz"
+  local download_url="https://github.com/$ORG/$REPO/archive/${version}.tar.gz"
+  local source_path="${install_path}/${version}.tar.gz""
 
   (
     echo "∗ Downloading and installing $ORG/$REPO..."
     mkdir -p "${install_path}/bin"
     curl --silent --location --create-dirs --output "$source_path" "$download_url" || fail "Could not download"
+    (cd "${install_path}" && tar xvfz ${version}.tar.gz")
     echo "The installation was successful!"
   ) || (
     rm -rf "$install_path"
